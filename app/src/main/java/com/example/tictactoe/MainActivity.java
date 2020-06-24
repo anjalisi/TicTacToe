@@ -6,6 +6,8 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     int active = 0; //0=circle , 1= cross
@@ -35,7 +37,20 @@ public class MainActivity extends AppCompatActivity {
                 if(gameState[win[0]]==gameState[win[1]]
                  && gameState[win[1]] ==gameState[win[2]] && gameState[win[0]]!=2)
                 {
+                    //Someone has won
+
+                    String winner = "Player 2";
+                    if(gameState[win[0]]==0)
+                    {
+                        winner= "Player 1";
+                    }
                     System.out.println(gameState[win[0]]);  //prints who won
+
+                    TextView winnermessage= (TextView)findViewById(R.id.text1);
+                    winnermessage.setText(winner+" has won !");
+
+                    LinearLayout layout= (LinearLayout) findViewById(R.id.playAgainLayout);
+                    layout.setVisibility(View.VISIBLE);
                 }
             }
 
